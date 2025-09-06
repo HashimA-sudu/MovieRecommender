@@ -119,7 +119,7 @@ def get_movie_poster(movie_name):
     if not row.empty:
         tmdb_id = row['TMDb ID'].values[0]
         # Retrieve poster from TMDB API
-        api_key = '9d7c2e7cfa61f948baee3ebfc456c82b'
+        api_key = '#APIKEY#'
         url = f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key={api_key}"
         response = requests.get(url)
         if response.status_code == 200:
@@ -157,3 +157,4 @@ def advanced_search():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
