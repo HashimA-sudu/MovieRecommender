@@ -3,21 +3,86 @@
 <head>
     <title>{{ movie['Movie Name'] }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <style>
+        .details-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px; 
+        }
+        .details-card h1 {
+            font-size: 2.5rem;
+            font-weight: bold; 
+        }
+        .details-card ul {
+            padding: 0; 
+        }
+        .details-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .details-card li:last-child {
+            border-bottom: none;
+        }
+
+        .head{
+            background-color: rgb(234, 64, 64);
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+              
+        }
+        .head h1{
+            margin-top: 0px;
+        }
+        
+        #cont{
+            border: solid black 2px;
+            padding: 10px;
+            
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1>{{ movie['Movie Name'] }}</h1>
-        <ul class="list-group">
-            <li class="list-group-item"><strong>Year:</strong> {{ movie['Year'] }}</li>
-            <li class="list-group-item"><strong>Genre:</strong> {{ movie['Genre'] }}</li>
-            <li class="list-group-item"><strong>Director:</strong> {{ movie['Director'] }}</li>
-            <li class="list-group-item"><strong>Actors:</strong> {{ movie['Actors'] }}</li>
-            <li class="list-group-item"><strong>Plot:</strong> {{ movie['Plot'] }}</li>
-            <li class="list-group-item"><strong>Language:</strong> {{ movie['Language'] }}</li>
-            <li class="list-group-item"><strong>Country:</strong> {{ movie['Country'] }}</li>
-            <li class="list-group-item"><strong>IMDb Rating:</strong> {{ movie['imdbRating'] }}</li>
-        </ul>
-        <a href="/" class="btn btn-primary mt-3">Back to Home</a>
+    <div class="head">
+        <h1>Wow! Nice Choice :)</h1>
+    </div>
+    <div id="cont" class="container mt-5">
+        <!-- Movie Title and Poster -->
+        <div class="row">
+            <div class="col-md-4 text-center">
+                {% if poster_url %}
+                    <img src="{{ poster_url }}" alt="Poster for {{ movie['Movie Name'] }}" class="img-fluid rounded shadow">
+                {% else %}
+                    <p class="text-muted">Poster not available</p>
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="details-card">
+                    <h1>{{ movie['Movie Name'] }}</h1>
+                    <ul class="list-unstyled mt-4">
+                        <li><strong>Year:</strong> {{ movie['Year'] }}</li>
+                        <li><strong>Genre:</strong> {{ movie['Genre'] }}</li>
+                        <li><strong>Director:</strong> {{ movie['Director'] }}</li>
+                        <li><strong>Actors:</strong> {{ movie['Actors'] }}</li>
+                        <li><strong>Rated:</strong> {{ movie['Rated'] }}</li>
+                        <li><strong>Plot:</strong> {{ movie['Plot'] }}</li>
+                        <li><strong>Language:</strong> {{ movie['Language'] }}</li>
+                        <li><strong>Country:</strong> {{ movie['Country'] }}</li>
+                        <li><strong>Rotten Tomatoes:</strong> {{ movie['Tomatometer Score'] }}</li>
+                        <li><strong>IMDb:</strong> {{ movie['imdbRating'] }}</li>
+                        <li><strong>Metacritic:</strong> {{ movie['Metascore'] }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <a href="/" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
